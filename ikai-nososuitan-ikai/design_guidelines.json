@@ -1,0 +1,114 @@
+{
+  "theme": "hybrid_fullstack (light novel reader web app)",
+  "aesthetic": "Modern Japanese Editorial & Fantasy Anime (Ethereal, Premium, Fluid). Inspired by 'Aguas Azules'. Emphasizes deep immersion, distinctive typography, and elegant spacing. Avoid AI-slop; prioritize an organic 'book' feel.",
+  "colors": {
+    "light": {
+      "background": "#F9F8F6",
+      "foreground": "#1A1C23",
+      "primary": "#0A84FF",
+      "primary_foreground": "#FFFFFF",
+      "surface": "#FFFFFF",
+      "border": "#E5E3DB"
+    },
+    "dark": {
+      "background": "#0B0E14",
+      "foreground": "#E2E8F0",
+      "primary": "#33E1FF",
+      "primary_foreground": "#000000",
+      "surface": "#121620",
+      "border": "#1E2532"
+    }
+  },
+  "typography": {
+    "primary_headings": "Spectral, serif",
+    "secondary_ui": "Outfit, sans-serif",
+    "reader_body": "Crimson Text, serif",
+    "rules": [
+      "Use 'Spectral' for the Book Title, Chapter headers, and dramatic pull quotes. Apply tracking-tight and leading-none.",
+      "Use 'Outfit' for UI elements (menus, buttons, tabs, author name, small metadata).",
+      "Use 'Crimson Text' for the actual novel content for optimal long-form readability. Set line-height to leading-relaxed or leading-loose.",
+      "CRITICAL: Never use Inter, Roboto, or Open Sans for headers."
+    ]
+  },
+  "layouts": {
+    "home_page": {
+      "description": "Dramatic Book Cover presentation. Large asymmetric title 'IKAI NO SŌSUITAN' over a beautiful ocean illustration. Below the hero section, use a Bento grid for Synopsis, Characters, and Table of Contents. Do NOT use boring standard cards."
+    },
+    "reader_view": {
+      "description": "Minimalist, distraction-free reading column. max-w-2xl or max-w-3xl, mx-auto. Generous vertical padding. The UI (header/footer) should be unobtrusive. Include full-bleed anime illustrations strategically placed between chapters."
+    },
+    "side_drawer": {
+      "description": "Glassmorphism drawer for Table of Contents, Character Encyclopedia, and Reading Settings (Font size, Theme). Heavy backdrop-blur to maintain immersion."
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Apply a subtle noise/grain overlay across the app to mimic paper/ink.",
+    "glassmorphism": "Use high-blur (backdrop-blur-xl or 2xl) and semi-transparent backgrounds for the header/navigation so it feels premium like milled crystal.",
+    "illustrations": "Full-bleed anime illustrations placed in the story flow, with subtle fade-in animations on scroll."
+  },
+  "components": [
+    {
+      "name": "Sheet (Drawer)",
+      "usage": "Use shadcn/ui Sheet for the side menu containing ToC, Characters, and Settings."
+    },
+    {
+      "name": "Slider",
+      "usage": "Use shadcn/ui Slider for adjusting font size and tracking reading progress."
+    },
+    {
+      "name": "Tabs",
+      "usage": "Use shadcn/ui Tabs in the Home page to elegantly switch between 'Synopsis' and 'Characters'."
+    },
+    {
+      "name": "Progress",
+      "usage": "Fixed bottom slim progress bar showing current chapter reading completion."
+    }
+  ],
+  "image_urls": [
+    {
+      "url": "https://images.unsplash.com/photo-1489321336462-efe12c02d099?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxmYW50YXN5JTIwaWxsdXN0cmF0aW9uJTIwb2NlYW58ZW58MHx8fHwxNzgzNzk0MjM3fDA&ixlib=rb-4.1.0&q=85",
+      "category": "Cover Background",
+      "description": "Seascape under half-moon. Use with a gradient overlay for the main book cover."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1755973707174-47be69f3d037?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHw0fHxhbmltZSUyMGFydHxlbnwwfHx8fDE3ODM3OTQyMzh8MA&ixlib=rb-4.1.0&q=85",
+      "category": "Character Illustration",
+      "description": "Anime girl holding a book. Use in the Characters section."
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1760814478558-ef81b96b7936?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxhbmltZSUyMGZhbnRhc3klMjBsYW5kc2NhcGUlMjBibHVlJTIwd2F0ZXJ8ZW58MHx8fHwxNzgzNzk0MjMxfDA&ixlib=rb-4.1.0&q=85",
+      "category": "Chapter Divider",
+      "description": "Dark reflective ocean. Use as a full-width image break between chapters in the reader."
+    }
+  ],
+  "motion": {
+    "page_transitions": "Smooth Framer Motion fade in/out between Cover Home and Reader view.",
+    "scroll_animations": "Use subtle translateY and opacity fades for paragraphs entering the viewport to make reading feel magical.",
+    "ui_hide": "Header and progress bar should smoothly fade or translate based on interaction to maximize the reading area."
+  },
+  "accessibility": [
+    "Ensure contrast ratios are met for long-form reading in both themes.",
+    "Provide text scaling controls (Font Size Slider) without breaking layout.",
+    "All interactive elements MUST have data-testid attributes (e.g., data-testid='read-button')."
+  ],
+  "instructions_to_main_agent": [
+    "Build this as a React application using .js/.jsx files (NOT .tsx).",
+    "Import fonts via Google Fonts in index.css: @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap');",
+    "Build a custom HTML/Tailwind cover/home page. DO NOT use generic Shadcn Cards for the book cover.",
+    "Implement the reader view using a simple semantic <article> layout with max-w-3xl.",
+    "Include a primary 'Leer Novela' (Read Novel) CTA on the Cover that transitions to the Reader View.",
+    "Use lucide-react for icons (Menu, Settings, Moon, Sun, ChevronLeft, ChevronRight, BookOpen).",
+    "In the reader view, add long dummy text in Spanish for Chapter 1 and Chapter 2 to demonstrate scrolling and the progress bar.",
+    "Ensure Dark/Light mode toggle is functional and updates Tailwind 'dark' class."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Do not center-align paragraphs in the reader view. Left-align (or justify) for optimal reading flow.",
+    "Use 2-3x more spacing than typical between chapters and major sections to create breathing room.",
+    "Never use generic placeholders; use the provided Unsplash URLs.",
+    "Create depth through layered design elements (glassmorphism for nav, solid colors for text).",
+    "NEVER use complete transparent background in header, overlays, or any surface that has content under it.",
+    "Implement data-testid on all interactive elements (e.g., data-testid='theme-toggle', data-testid='chapter-link', data-testid='font-increase-btn').",
+    "Use crisp edges via semi-transparent borders and nested radii where appropriate.",
+    "Avoid the 'AI slop' look by avoiding generic centered layouts and simplistic gradients."
+  ]
+}
